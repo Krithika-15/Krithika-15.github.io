@@ -6,7 +6,7 @@
 const CONTENT = {
   // ---- Basics -------------------------------------------------
   name: "Krithika Ravichandran",
-  role: "Python & AI Developer",
+  role: "Junior Python & AI Developer",
   tagline:
     "I build Python backends and connect them to AI. I bring five years of experience making AI output reliable: training, evaluating and delivering document-AI models for clients at LTIMindtree.",
   location: "Stockholm, Sweden",
@@ -247,6 +247,6 @@ const CONTENT = {
   // ---- Contact ------------------------------------------------
   contact: {
     heading: "Open to Python & AI developer roles",
-    body: "I finish my Lexicon training in February 2027 and my internship in May 2027. After that I'm looking for a junior Python or AI developer role in Stockholm or remote. Email is the fastest way to reach me.",
+    body: "I finish my Lexicon training in February 2027 and my internship in May 2027. After that I'm looking for a Python or AI developer role in Stockholm or remote. Email is the fastest way to reach me.",
   },
 };
