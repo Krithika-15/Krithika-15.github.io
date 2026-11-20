@@ -13,7 +13,7 @@ const CONTENT = {
   email: "krithikakrs96@gmail.com",
   // Phone is deliberately left off the public site to avoid scrapers.
   // It's on the resume PDF for anyone who asks.
-  resume: "assets/resume.pdf?v=2", // raise the number after replacing the PDF
+  resume: "assets/resume.pdf?v=3", // raise the number after replacing the PDF
 
   // Set to true once you have written your first real blog post.
   // While false, the Blog link and the Writing section are hidden.
