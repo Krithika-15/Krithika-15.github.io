@@ -13,7 +13,7 @@ const CONTENT = {
   email: "krithikakrs96@gmail.com",
   // Phone is deliberately left off the public site to avoid scrapers.
   // It's on the resume PDF for anyone who asks.
-  resume: "assets/resume.pdf",
+  resume: "assets/resume.pdf?v=2", // raise the number after replacing the PDF
 
   // Set to true once you have written your first real blog post.
   // While false, the Blog link and the Writing section are hidden.
@@ -22,7 +22,7 @@ const CONTENT = {
   // ---- Social links -------------------------------------------
   socials: [
     { label: "GitHub",   url: "https://github.com/Krithika-15",                        icon: "github" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/krithika-ravichandran",         icon: "linkedin" },
+    { label: "LinkedIn", url: "https://linkedin.com/in/krithika-ravichandran-657050140", icon: "linkedin" },
     { label: "Email",    url: "mailto:krithikakrs96@gmail.com",                        icon: "mail" },
   ],
 
@@ -87,7 +87,7 @@ const CONTENT = {
     {
       title: "Book Club Library API",
       blurb:
-        "A REST API for a book club's library, built with FastAPI and SQLite by a four-person Scrum team over two sprints. My part: the Open Library integration, so members can search real books by title (with a timeout, 400 for an empty search and 503 when Open Library is down). I also built the report endpoints (never-borrowed books, most-borrowed books, overdue loans), the author filter, the remove-book endpoint and API-key protection on every route.",
+        "A 20-endpoint REST API with FastAPI and SQLite that replaces a volunteer library's notebook-based loan tracking, built by a four-person Scrum team over two sprints. I was a Developer in both sprints and Product Owner in sprint 2. My part: the Open Library search and import (with a timeout, 400 for an empty search and 503 when Open Library is down), the overdue, most-borrowed and never-borrowed endpoints, API-key protection on the write routes, and the client's register, login and return menus, in 12 reviewed pull requests.",
       tags: ["FastAPI", "SQLite", "REST API", "External API", "Scrum"],
       repo: "https://github.com/delarge77/Book-Club-Library",
       demo: null,
@@ -189,10 +189,11 @@ const CONTENT = {
       ],
     },
     {
-      role: "Career break and upskilling",
+      role: "Career break: relocation and Python retraining",
       org: "Stockholm, Sweden",
-      period: "Jan 2025 — Aug 2026",
+      period: "Nov 2024 — Aug 2026",
       points: [
+        "Relocated to Stockholm and cared for my young child while retraining for software development.",
         "Earned the UiPath Automation Developer Associate certification and built two RPA bots.",
         "Started Python with small tested projects: todo-cli and logicgym, both with pytest.",
       ],
@@ -205,7 +206,6 @@ const CONTENT = {
         "Built client solutions on Fosfor Aspect: labelled training documents, trained custom extraction and classification models, and picked the most accurate one.",
         "Met clients to gather requirements and defined acceptance criteria for tailored AI solutions.",
         "Validated solutions against client accuracy thresholds before deployment, working with developers to reproduce and fix issues.",
-        "Served as liaison across 5 cross-functional teams, improving requirement clarity and reducing deployment rework by 40%.",
       ],
     },
     {
@@ -221,7 +221,7 @@ const CONTENT = {
     {
       role: "Graduate Engineer Trainee",
       org: "LTIMindtree · India",
-      period: "Sep 2019 — Oct 2020",
+      period: "Sep 2019 — Sep 2020",
       points: [
         "Tested every new feature and release of Fosfor Aspect: functional, regression and sanity testing.",
         "Validated AI model output, where the same input can give different results.",

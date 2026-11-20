@@ -33,4 +33,4 @@ After changing a CSS or JS file, raise the `?v=` number on its links in the thre
 
 ## Contact
 
-[LinkedIn](https://linkedin.com/in/krithika-ravichandran) · [GitHub](https://github.com/Krithika-15)
+[LinkedIn](https://linkedin.com/in/krithika-ravichandran-657050140) · [GitHub](https://github.com/Krithika-15)
