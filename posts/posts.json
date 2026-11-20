@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "hello-world",
+    "title": "Hello, world",
+    "date": "2026-09-02",
+    "summary": "Why I started writing, and what you can expect to find here.",
+    "tags": ["meta"],
+    "draft": true
+  },
+  {
+    "slug": "writing-a-post",
+    "title": "How this blog works",
+    "date": "2026-09-01",
+    "summary": "A reference post showing every bit of markdown formatting this site supports.",
+    "tags": ["meta", "guide"],
+    "draft": true
+  }
+]
