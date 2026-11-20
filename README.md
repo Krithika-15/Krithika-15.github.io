@@ -28,6 +28,9 @@ python -m http.server 5173
 
 Then open http://localhost:5173.
 
+After changing a CSS or JS file, raise the `?v=` number on its links in the three `.html` files
+(for example `?v=2` → `?v=3`), so browsers fetch the new file instead of an old saved copy.
+
 ## Contact
 
 [LinkedIn](https://linkedin.com/in/krithika-ravichandran) · [GitHub](https://github.com/Krithika-15)
