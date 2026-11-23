@@ -7,13 +7,47 @@ const CONTENT = {
   // ---- Basics -------------------------------------------------
   name: "Krithika Ravichandran",
   role: "Junior Python & AI Developer",
+  // The big statement at the top. `highlight` gets the coloured underline.
+  headline: {
+    before: "Python backends, and AI output ",
+    highlight: "you can trust",
+    after: ".",
+  },
+  // Shown after "Hi, I'm <name>, " under the headline.
   tagline:
-    "I build Python backends and connect them to AI. I bring five years of experience making AI output reliable: training, evaluating and delivering document-AI models for clients at LTIMindtree.",
+    "a Python & AI developer in Stockholm. For five years I trained, evaluated and delivered document-AI models at LTIMindtree. Now I build the backends around them.",
   location: "Stockholm, Sweden",
   email: "krithikakrs96@gmail.com",
   // Phone is deliberately left off the public site to avoid scrapers.
   // It's on the resume PDF for anyone who asks.
   resume: "assets/resume.pdf?v=3", // raise the number after replacing the PDF
+
+  // ---- Hero extras ----------------------------------------------
+  status: "Open to Python & AI roles from June 2027",
+  // The API card beside the headline: a request to "my" API and its JSON reply.
+  // Values can be text, a list of text, or true/false.
+  apiCard: {
+    request: "GET /about",
+    status: "200 OK",
+    body: {
+      name: "Krithika Ravichandran",
+      role: "Python & AI Developer",
+      based_in: "Stockholm",
+      stack: ["Python", "FastAPI", "SQL", "LLMs"],
+      built: ["Book Club API", "Match Point"],
+      experience: "5 yrs in document AI",
+      open_to_work: true,
+    },
+  },
+
+  // ---- Now ------------------------------------------------------
+  now: {
+    updated: "November 2026",
+    items: [
+      "Training full-time at Lexicon: Python, SQL and FastAPI done, machine learning and LLMs next",
+      "Getting ready for my APL internship in March 2027",
+    ],
+  },
 
   // Set to true once you have written your first real blog post.
   // While false, the Blog link and the Writing section are hidden.
@@ -29,7 +63,7 @@ const CONTENT = {
   // ---- About --------------------------------------------------
   about: [
     "I'm a Python developer in training with a background in AI. For five years at LTIMindtree I worked on Fosfor Aspect, an AI platform that reads unstructured documents: it finds entities, classifies documents and extracts tables. For client use cases I labelled training documents, trained custom models, compared their accuracy and delivered the best one as a proof of concept.",
-    "That work showed me how much I enjoy the building side, so I'm now training full-time as a Python & AI developer at Lexicon in Stockholm. So far I've built an OOP booking system on my own and a FastAPI + SQLite REST API in a four-person Scrum team. Next up are machine learning, LLM APIs, RAG, AI agents, Docker and Azure. Alongside the course, I'm taking Udemy courses on LLM engineering and AI agents.",
+    "That work showed me how much I enjoy the building side, so I'm now training full-time as a Python & AI developer at Lexicon in Stockholm. So far I've built an OOP booking system on my own and a FastAPI + SQLite REST API in a four-person Scrum team. Next up are machine learning, LLM APIs, RAG, AI agents, Docker and Azure.",
     "What I bring to a team: clean, tested Python, and the habit of checking that AI output is actually good enough, not just that the code runs.",
   ],
 
@@ -87,7 +121,13 @@ const CONTENT = {
     {
       title: "Book Club Library API",
       blurb:
-        "A 20-endpoint REST API with FastAPI and SQLite that replaces a volunteer library's notebook-based loan tracking, built by a four-person Scrum team over two sprints. I was a Developer in both sprints and Product Owner in sprint 2. My part: the Open Library search and import (with a timeout, 400 for an empty search and 503 when Open Library is down), the overdue, most-borrowed and never-borrowed endpoints, API-key protection on the write routes, and the client's register, login and return menus, in 12 reviewed pull requests.",
+        "A 20-endpoint REST API with FastAPI and SQLite that replaces a volunteer library's notebook-based loan tracking. Built by a four-person Scrum team over two sprints: I was a Developer in both sprints and Product Owner in sprint 2.",
+      built: [
+        "Open Library search and import, with a timeout, 400 for an empty search and 503 when the service is down",
+        "Overdue, most-borrowed and never-borrowed report endpoints",
+        "API-key protection on the write routes, as one reusable FastAPI dependency",
+        "The client's register, login and return menus, in 12 reviewed pull requests",
+      ],
       tags: ["FastAPI", "SQLite", "REST API", "External API", "Scrum"],
       repo: "https://github.com/delarge77/Book-Club-Library",
       demo: null,
@@ -98,7 +138,12 @@ const CONTENT = {
     {
       title: "Match Point booking system",
       blurb:
-        "A booking system for a sports centre, built on my own: tennis and padel courts plus yoga classes. Court and GroupClass inherit from Resource, and all booking rules live in one BookingSystem class, kept apart from the menu. The rules: one booking per court per hour, a 12-person cap on classes, no double joining, no court and class at the same hour, and you can only cancel your own bookings.",
+        "A command-line booking system for a sports centre's tennis and padel courts and yoga classes, built on my own.",
+      built: [
+        "Court and GroupClass inherit from a shared Resource class",
+        "All booking rules in one BookingSystem class, kept apart from the menu",
+        "has_booking_at() stops a court and a class at the same hour",
+      ],
       tags: ["Python", "OOP", "Inheritance", "Validation"],
       repo: "https://github.com/Krithika-15/matchpoint-booking",
       demo: null,
@@ -109,7 +154,12 @@ const CONTENT = {
     {
       title: "todo-cli",
       blurb:
-        "A Python to-do CLI with a pytest suite, plus a written record of three silent bugs I found in my own code. Marking a missing task did nothing and said nothing. Removing a task could create duplicate ids, so some tasks could never be reached again. Completed tasks became undone after every restart, because a string was compared to a boolean. Each fix has a regression test.",
+        "A Python to-do CLI with a pytest suite, and a written record of three silent bugs I found in my own code.",
+      built: [
+        "Marking a missing task now gives an error instead of doing nothing",
+        "Fixed duplicate ids after a removal, and done tasks resetting on restart",
+        "Each fix pinned by a regression test",
+      ],
       tags: ["Python", "pytest", "CLI", "File storage"],
       repo: "https://github.com/Krithika-15/todo-cli",
       demo: null,
@@ -120,7 +170,12 @@ const CONTENT = {
     {
       title: "Fosfor Aspect: document AI",
       blurb:
-        "Fosfor Aspect is LTIMindtree's AI platform for unstructured documents: named entity recognition, document classification, object detection and table extraction. For client use cases such as invoices, I labelled training documents, trained custom models on top of the data science team's base models, compared accuracy and picked the best model for the proof of concept.",
+        "LTIMindtree's AI platform for unstructured documents: named entity recognition, classification, object detection and table extraction.",
+      built: [
+        "Labelled training documents for client use cases such as invoices",
+        "Trained custom models on the data science team's base models",
+        "Compared accuracy and picked the best model for the POC",
+      ],
       tags: ["NER", "Model training", "Model evaluation", "Client delivery"],
       repo: null, // Client work, no public repository.
       note: "Client work at LTIMindtree, so the code isn't public.",

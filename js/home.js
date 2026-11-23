@@ -11,21 +11,82 @@ function renderHero() {
     )
     .join("");
 
+  const h = CONTENT.headline || {};
+  const underline = `<svg class="squiggle" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M2 9 C 40 2, 70 13, 110 7 S 180 2, 220 8 S 280 11, 298 5" /></svg>`;
+
   $("#hero").innerHTML = `
-    <div class="wrap">
-      <p class="eyebrow">${esc(CONTENT.location || "")}</p>
-      <h1>${esc(CONTENT.name)}</h1>
-      <p class="role">${esc(CONTENT.role)}</p>
-      <p class="tagline">${esc(CONTENT.tagline)}</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">View work ${ICONS.arrow}</a>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
         ${
-          CONTENT.resume
-            ? `<a class="btn" href="${esc(CONTENT.resume)}" target="_blank"
-                  rel="noopener">${ICONS.download} Resume</a>`
+          CONTENT.status
+            ? `<p class="status-pill"><span class="dot"></span>${esc(CONTENT.status)}</p>`
             : ""
         }
-        <div class="socials">${socials}</div>
+        <h1 class="statement">${esc(h.before)}<span class="hl">${esc(h.highlight)}${underline}</span>${esc(h.after)}</h1>
+        <p class="tagline">Hi, I'm <strong>${esc(CONTENT.name)}</strong>, ${esc(CONTENT.tagline)}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View work ${ICONS.arrow}</a>
+          ${
+            CONTENT.resume
+              ? `<a class="btn" href="${esc(CONTENT.resume)}" target="_blank"
+                    rel="noopener">${ICONS.download} Resume</a>`
+              : ""
+          }
+          <div class="socials">${socials}</div>
+        </div>
+      </div>
+      ${renderApiCard()}
+    </div>`;
+}
+
+/** An API client window: "GET /about" and its JSON reply about me. */
+function renderApiCard() {
+  const a = CONTENT.apiCard;
+  if (!a) return "";
+  const str = (v) => `<span class="j-s">"${esc(v)}"</span>`;
+  const val = (v) =>
+    Array.isArray(v)
+      ? `[${v.map(str).join(", ")}]`
+      : typeof v === "boolean"
+      ? `<span class="j-b">${v}</span>`
+      : str(v);
+  const keys = Object.keys(a.body);
+  const lines = keys
+    .map(
+      (k, i) =>
+        `<span class="j-line" style="--i:${i}">  <span class="j-k">"${esc(k)}"</span>: ${val(a.body[k])}${
+          i < keys.length - 1 ? "," : ""
+        }</span>`
+    )
+    .join("\n");
+  const [method, ...path] = a.request.split(" ");
+  return `
+    <figure class="api-card">
+      <div class="api-bar">
+        <span class="method">${esc(method)}</span>
+        <span class="url">${esc(path.join(" "))}</span>
+        <span class="send">Send</span>
+      </div>
+      <div class="api-status"><span class="ok">${esc(a.status)}</span><span>application/json</span></div>
+<pre class="api-body"><code>{
+${lines}
+}</code></pre>
+    </figure>`;
+}
+
+function renderNow() {
+  const n = CONTENT.now;
+  const host = $("#now");
+  if (!n || !host) { host && host.remove(); return; }
+  host.innerHTML = `
+    <div class="wrap">
+      <div class="now">
+        <div class="now-label">
+          <span class="now-title"><span class="pulse"></span>Now</span>
+          <span class="now-date">Updated ${esc(n.updated)}</span>
+        </div>
+        <ul class="now-list">${n.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>
       </div>
     </div>`;
 }
@@ -92,6 +153,13 @@ function renderProjects() {
         .filter(Boolean)
         .join("");
 
+      const built = (p.built || []).length
+        ? `<div class="built">
+             <h4>${p.repo === null ? "What I did" : "What I built"}</h4>
+             <ul>${p.built.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
+           </div>`
+        : "";
+
       return `<article class="project${p.featured ? " featured" : ""}">
         ${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.title)} screenshot" loading="lazy">` : ""}
         <div class="project-top">
@@ -99,6 +167,7 @@ function renderProjects() {
           ${p.year ? `<span class="year">${esc(p.year)}</span>` : ""}
         </div>
         <p>${esc(p.blurb)}</p>
+        ${built}
         ${tags ? `<div class="post-tags">${tags}</div>` : ""}
         ${
           links
@@ -204,6 +273,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.title = `${CONTENT.name} — ${CONTENT.role}`;
   renderHeader("home");
   renderHero();
+  renderNow();
   renderAbout();
   renderSkills();
   renderProjects();
